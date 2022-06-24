@@ -1,26 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { Route, Routes } from 'react-router-dom';
 
-export default App;
+import './App.scss';
+import { Header } from './components/Header/Header';
+import { PathNavigation } from './enums/navigation';
+
+export const App = () => (
+  <div className="wrapper">
+    <Header />
+    <Routes>
+      <Route path={PathNavigation.PRODUCT} element="hello" />
+      <Route path={PathNavigation.SHOPPING_CART} element="cart" />
+    </Routes>
+  </div>
+);

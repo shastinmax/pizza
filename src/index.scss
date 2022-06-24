@@ -1,0 +1,10 @@
+@import 'css/normalize';
+@import 'css/variables';
+@import 'css/global';
+@import 'css/fonts';
+
+body {
+    background-color: $body-background-color;
+    font-family: 'Proxima Nova', sans-serif;
+}
+
