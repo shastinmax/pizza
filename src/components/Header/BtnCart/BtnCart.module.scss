@@ -5,14 +5,20 @@
     height: 50px;
     border-radius: 30px;
     background-color: $orange-color;
+    text-align: center;
     &_ruble{
       width: 10px;
       margin-left: 5px;
     }
+    &_cart{
+      margin: 0 8px 0 13px;
+
+    }
+    &_br{
+      border-right: 1px solid rgba(255, 255, 255, 0.25);
+      margin-left: 13px;
+    }
   }
 }
-.border{
-  border-right: 1px solid rgba(255, 255, 255, 0.25);
-  margin-left: 13px;
-}
+
 

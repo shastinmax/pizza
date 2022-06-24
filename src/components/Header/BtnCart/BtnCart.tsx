@@ -15,8 +15,13 @@ export const BtnCart = () => (
         src="/images/icons/ruble.svg"
         alt="ruble"
       />
-      <span className={s.border} />
-      <img src="" alt="shopping-cart" />
+      <span className={s.btnCart__linkCart_br} />
+      <img
+        className={s.btnCart__linkCart_cart}
+        src="/images/icons/shopping-cart.svg"
+        alt="shopping-cart"
+      />
+      <span>3</span>
     </NavLink>
   </div>
 );
