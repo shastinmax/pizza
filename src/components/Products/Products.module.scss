@@ -1,0 +1,13 @@
+
+.products{
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 81px;
+    }
+    &__title{
+        margin-top: 32px;
+
+    }
+}

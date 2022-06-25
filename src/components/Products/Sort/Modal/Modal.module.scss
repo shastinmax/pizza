@@ -1,0 +1,33 @@
+@import 'src/css/variables';
+
+.modal {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    max-width: 132px;
+    padding: 13px 0 9px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+    border-radius: 10px;
+
+    p {
+        display: flex;
+        align-items: center;
+        text-align: right;
+        height: 38px;
+        font-size: 14px;
+        font-weight: 400;
+        cursor: pointer;
+        &:hover {
+            background-color: $sort-bg-hover;
+
+        }
+        span{
+            margin-left: 10px;
+            &:hover{
+                color:$orange-color;
+            }
+        }
+
+
+    }
+}
