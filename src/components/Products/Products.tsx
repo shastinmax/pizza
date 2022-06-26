@@ -13,7 +13,16 @@ const Products = () => (
       <Sort />
     </div>
     <h1 className={s.products__title}>Все пиццы</h1>
-    <ProductItem />
+    <div className={s.products__productItems}>
+      <ProductItem />
+      <ProductItem />
+      <ProductItem />
+      <ProductItem />
+      <ProductItem />
+      <ProductItem />
+      <ProductItem />
+      <ProductItem />
+    </div>
   </>
 );
 

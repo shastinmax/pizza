@@ -8,6 +8,11 @@
     }
     &__title{
         margin-top: 32px;
-
+    }
+    &__productItems{
+        margin: 0 -17px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 }

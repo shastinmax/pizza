@@ -9,10 +9,12 @@ import { PathNavigation } from './enums/navigation';
 
 export const App = () => (
   <div className="wrapper">
-    <Header />
-    <Routes>
-      <Route path={PathNavigation.PRODUCT} element={<Products />} />
-      <Route path={PathNavigation.SHOPPING_CART} element="cart" />
-    </Routes>
+    <div className="container">
+      <Header />
+      <Routes>
+        <Route path={PathNavigation.PRODUCT} element={<Products />} />
+        <Route path={PathNavigation.SHOPPING_CART} element="cart" />
+      </Routes>
+    </div>
   </div>
 );
