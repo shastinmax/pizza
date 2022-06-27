@@ -1,0 +1,58 @@
+.shoppingCartItem{
+    &__wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 30px;
+        margin-top: 30px;
+        button{
+            border: none;
+            background: none;
+            img{
+                width: 32px;
+
+            }
+        }
+    }
+    &__menu{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img{
+            width: 80px;
+        }
+
+    }
+    &__price{
+        font-size: 22px;
+        img{
+            width: 12px;
+        }
+
+    }
+    &__menuTitle{
+        margin-left: 15px;
+        font-size: 22px;
+        line-height: 27px;
+        letter-spacing: 0.01em;
+
+        span{
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 22px;
+            letter-spacing: 0.01em;
+            color: #8D8D8D;
+        }
+    }
+    &__increment{
+        display: flex;
+        align-items: center;
+        img{
+            width: 32px;
+        }
+        span{
+            font-size: 22px;
+            margin: 0 12px;
+        }
+    }
+}

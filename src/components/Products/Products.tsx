@@ -6,7 +6,7 @@ import { Buttons } from './Buttons/Buttons';
 import s from './Products.module.scss';
 import { Sort } from './Sort/Sort';
 
-const Products = () => (
+export const Products = () => (
   <>
     <div className={s.products__header}>
       <Buttons />
@@ -25,5 +25,3 @@ const Products = () => (
     </div>
   </>
 );
-
-export default Products;
