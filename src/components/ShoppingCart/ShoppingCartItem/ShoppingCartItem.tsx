@@ -11,14 +11,17 @@ export const ShoppingCartItem = () => (
         <span>тонкое тесто, 26 см</span>
       </div>
     </div>
+
     <div className={s.shoppingCartItem__increment}>
       <img src="/images/icons/shCart-minus.svg" alt="minus" />
       <span>2</span>
       <img src="/images/icons/shCart-plus.svg" alt="plus" />
     </div>
+
     <div className={s.shoppingCartItem__price}>
       770 <img src="/images/icons/ruble-black.svg" alt="ruble" />
     </div>
+
     <button type="button">
       <img
         className={s.shoppingCartItem__delete}

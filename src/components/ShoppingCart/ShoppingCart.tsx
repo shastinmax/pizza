@@ -23,5 +23,25 @@ export const ShoppingCart = () => (
       <ShoppingCartItem />
       <ShoppingCartItem />
     </div>
+    <div className={s.shoppingCart__total}>
+      <p className={s.shoppingCart__totalAll}>
+        Всего пицц: <span>3 шт</span>
+      </p>
+      <p className={s.shoppingCart__totalPrice}>
+        Сумма заказа:{' '}
+        <span>
+          900
+          <img src="/images/icons/ruble-orange.svg" alt="ruble" />
+        </span>
+      </p>
+    </div>
+    <div className={s.shoppingCart__footer}>
+      <button className={`btn ${s.shoppingCart__btnBack}`} type="button">
+        <img src="/images/icons/arrow.svg" alt="arrow" /> Вернуться назад
+      </button>
+      <button type="button" className={`btn ${s.shoppingCart__btnPay}`}>
+        Оплатить сейчас
+      </button>
+    </div>
   </div>
 );
