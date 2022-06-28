@@ -8,7 +8,7 @@ import { btns } from './Constants/constants';
 export const Buttons = () => (
   <div className={s.buttons}>
     {btns.map(btn => (
-      <Btn key={btn} title={btn} />
+      <Btn key={btn} title={btn} className={s.btnItem} />
     ))}
   </div>
 );

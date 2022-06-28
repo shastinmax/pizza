@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import './App.scss';
+import EmptyShoppingCart from './components/EmptyShoppingCart/EmptyShoppingCart';
 import { Header } from './components/Header/Header';
 import { Products } from './components/Products/Products';
 import { ShoppingCart } from './components/ShoppingCart/ShoppingCart';
@@ -15,6 +16,10 @@ export const App = () => (
       <Routes>
         <Route path={PathNavigation.PRODUCT} element={<Products />} />
         <Route path={PathNavigation.SHOPPING_CART} element={<ShoppingCart />} />
+        <Route
+          path={PathNavigation.EMPTY_SHOPPING_CART}
+          element={<EmptyShoppingCart />}
+        />
       </Routes>
     </div>
   </div>

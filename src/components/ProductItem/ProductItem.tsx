@@ -23,6 +23,7 @@ export const ProductItem = () => (
       <span className={s.productItem__footer_text}>
         от 395 <img src="/images/icons/ruble-black.svg" alt="ruble" />
       </span>
+
       <button type="button" className={`btn ${s.productItem__footer_btn}`}>
         <img src="/images/icons/plus.svg" alt="plus" /> Добавить
         <span>2</span>

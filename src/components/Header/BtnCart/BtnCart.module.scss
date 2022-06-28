@@ -1,5 +1,8 @@
 @import 'src/css/variables';
 .btnCart{
+  &__wrapperSpan{
+   text-align: center;
+  }
   &__linkCart{
     width: 150px;
     height: 50px;
