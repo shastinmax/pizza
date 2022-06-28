@@ -6,6 +6,7 @@ export const ProductItem = () => (
   <div className={s.productItem__wrapper}>
     <img src="/images/pizza.jpg" alt="pizza" />
     <h2 className={s.productItem__title}>Чизбургер-пицца</h2>
+
     <div className={s.productItem__sort}>
       <ul className={s.productItem__sort_listTitle}>
         <li className={s.productItem__sort_active}>тонкое</li>
@@ -17,6 +18,7 @@ export const ProductItem = () => (
         <li>40 см</li>
       </ul>
     </div>
+
     <div className={s.productItem__footer}>
       <span className={s.productItem__footer_text}>
         от 395 <img src="/images/icons/ruble-black.svg" alt="ruble" />
