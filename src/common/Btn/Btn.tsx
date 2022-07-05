@@ -3,10 +3,15 @@ import React from 'react';
 import { BtnTypeProps } from './types';
 
 const Btn = (props: BtnTypeProps) => {
-  const { title, className } = props;
+  const { title, className, callback } = props;
+  const setActiveBtn = () => {
+    if (callback) {
+      callback();
+    }
+  };
   return (
     <div>
-      <button className={`btn ${className}`} type="button">
+      <button onClick={setActiveBtn} className={`btn ${className}`} type="button">
         {title}
       </button>
     </div>

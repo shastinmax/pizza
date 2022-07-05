@@ -1,0 +1,37 @@
+@import '../../../scss/variables';
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__item{
+        color: $text-color;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        margin-right: 9px;
+        cursor: pointer;
+    }
+    &__active{
+        background: $active-btn;
+        color: $active-btn-text;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        margin-right: 9px;
+        cursor: pointer;
+    }
+}
+
+//.btnItem {
+//    color: $text-color;
+//    font-size: 16px;
+//    line-height: 19px;
+//    text-align: center;
+//    margin-right: 9px;
+//    cursor: pointer;
+//
+//    &:active {
+//        background: $active-btn;
+//        color: $active-btn-text;
+//    }
+//}
