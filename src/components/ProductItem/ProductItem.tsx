@@ -8,10 +8,11 @@ const FIRST_INDEX = 0;
 export const ProductItem = (props: ProductItemPropsType) => {
   const { name, imageUrl, sizes, price, types } = props;
   const categoriesPizzas = ['тонкое', 'традиционное'];
-  // eslint-disable-next-line prefer-const
+
   const [count, setCount] = useState<number>(FIRST_INDEX);
   const [sizeActive, setSizeActive] = useState<null | number>(null);
   const [categoryActive, setCategoryActive] = useState<null | number>(null);
+
   const addProductItem = () => {
     setCount(count + 1);
   };
@@ -21,6 +22,7 @@ export const ProductItem = (props: ProductItemPropsType) => {
   const onCategoryActiveClick = (i: number) => {
     setCategoryActive(i);
   };
+
   return (
     <div className={s.productItem__wrapper}>
       <img className={s.productItem__pizza} src={imageUrl} alt="pizza" />
