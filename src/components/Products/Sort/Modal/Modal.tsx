@@ -1,17 +1,27 @@
 import React from 'react';
 
+import { categories } from './constants/constants';
 import s from './Modal.module.scss';
+import { ModalPropsType } from './types';
 
-export const Modal = () => (
-  <div className={s.modal}>
-    <p>
-      <span>популярности</span>
-    </p>
-    <p>
-      <span>по цене</span>
-    </p>
-    <p>
-      <span>по алфавиту</span>
-    </p>
-  </div>
-);
+export const Modal = (props: ModalPropsType) => {
+  const { addCategory, isShowClick } = props;
+
+  const onAddCategoryClick = (categoryName: string) => {
+    addCategory(categoryName);
+    isShowClick();
+  };
+
+  return (
+    <div className={s.modal}>
+      {categories.map((category, i) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <p key={i}>
+          <span role="presentation" onClick={() => onAddCategoryClick(category)}>
+            {category}
+          </span>
+        </p>
+      ))}
+    </div>
+  );
+};

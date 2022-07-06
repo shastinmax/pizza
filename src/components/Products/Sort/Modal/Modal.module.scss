@@ -20,15 +20,14 @@
         font-size: 14px;
         font-weight: 400;
         cursor: pointer;
+
         &:hover {
             background-color: $sort-bg-hover;
-
+            color: $orange-color;
         }
-        span{
+
+        span {
             margin-left: 10px;
-            &:hover{
-                color:$orange-color;
-            }
         }
 
 

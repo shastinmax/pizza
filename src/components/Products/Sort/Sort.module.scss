@@ -2,11 +2,18 @@
 .sort{
     position: relative;
   &__text{
+      display: inline-block;
       font-size: 14px;
       margin-left: 7px;
+      width: 203px;
+
       span{
           color:$orange-color;
           border-bottom: 1px dotted $orange-color;
+          cursor: pointer;
       }
   }
+}
+.close{
+    display: none;
 }
