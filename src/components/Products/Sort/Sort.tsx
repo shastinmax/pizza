@@ -24,7 +24,7 @@ export const Sort = () => {
           {category}
         </span>
       </span>
-      {isShow ? <Modal addCategory={addCategory} isShowClick={isShowClick} /> : ''}
+      {isShow && <Modal addCategory={addCategory} isShowClick={isShowClick} />}
     </div>
   );
 };
