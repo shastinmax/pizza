@@ -2,9 +2,12 @@ import React from 'react';
 
 import ContentLoader from 'react-content-loader';
 
+import s from '../ProductItem/ProductItem.module.scss';
+
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const Sceleton = () => (
   <ContentLoader
+    className={s.productItem__wrapper}
     speed={0}
     width={280}
     height={485}
