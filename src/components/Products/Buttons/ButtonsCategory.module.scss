@@ -1,8 +1,19 @@
 @import '../../../scss/variables';
+.wrapper{
+    @media (max-width: 980px){
+        width: 100%;
+        overflow: auto;
+    }
+}
 .buttons{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    @media (max-width: 980px){
+        margin-top: 30px;
+        width: 785px;
+    }
 
     &__item{
         color: $text-color;

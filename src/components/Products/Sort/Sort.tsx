@@ -4,7 +4,7 @@ import { Modal } from './Modal/Modal';
 import s from './Sort.module.scss';
 
 export const Sort = () => {
-  const [isShow, setIsShow] = useState<boolean>(true);
+  const [isShow, setIsShow] = useState<boolean>(false);
   const [category, setCategory] = useState('популярности');
 
   const isShowClick = () => {

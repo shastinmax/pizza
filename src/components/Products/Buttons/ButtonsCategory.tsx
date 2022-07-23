@@ -13,15 +13,17 @@ export const ButtonsCategory = () => {
   };
 
   return (
-    <div className={s.buttons}>
-      {btns.map((btn, i) => (
-        <Btn
-          key={btn}
-          title={btn}
-          callback={() => onButtonClick(i)}
-          className={active === i ? s.buttons__active : s.buttons__item}
-        />
-      ))}
+    <div className={s.wrapper}>
+      <div className={s.buttons}>
+        {btns.map((btn, i) => (
+          <Btn
+            key={btn}
+            title={btn}
+            callback={() => onButtonClick(i)}
+            className={active === i ? s.buttons__active : s.buttons__item}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,6 +1,9 @@
 import React from 'react';
 
-import Btn from '../../common/Btn/Btn';
+import { NavLink } from 'react-router-dom';
+
+// import Btn from '../../common/Btn/Btn';
+import { PathNavigation } from '../../enums/navigation';
 
 import s from './EmptyShoppingCart.module.scss';
 
@@ -18,7 +21,10 @@ const EmptyShoppingCart = () => (
       src="/images/shopping-man.jpg"
       alt="man"
     />
-    <Btn title="Вернуться назад" className={s.emptyShoppingCart__btn} />
+    {/* <Btn title="Вернуться назад" className={s.emptyShoppingCart__btn} /> */}
+    <NavLink className={`btn ${s.emptyShoppingCart__btn}`} to={PathNavigation.PRODUCT}>
+      Вернуться назад
+    </NavLink>
   </div>
 );
 
