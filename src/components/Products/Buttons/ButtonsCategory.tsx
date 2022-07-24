@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Btn from '../../../common/Btn/Btn';
 
 import s from './ButtonsCategory.module.scss';
-import { btns } from './Constants/constants';
+import { categories } from './Constants/constants';
+import { ButtonsCategoryPropsType } from './types';
 
-export const ButtonsCategory = () => {
-  const [active, setActive] = useState(0);
-
-  const onButtonClick = (i: number) => {
-    setActive(i);
-  };
+export const ButtonsCategory = (props: ButtonsCategoryPropsType) => {
+  const { category, onClickCategory } = props;
 
   return (
     <div className={s.wrapper}>
       <div className={s.buttons}>
-        {btns.map((btn, i) => (
+        {categories.map((categoryName, i) => (
           <Btn
-            key={btn}
-            title={btn}
-            callback={() => onButtonClick(i)}
-            className={active === i ? s.buttons__active : s.buttons__item}
+            key={categoryName}
+            title={categoryName}
+            callback={() => onClickCategory(i)}
+            className={category === i ? s.buttons__active : s.buttons__item}
           />
         ))}
       </div>
