@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -10,19 +10,26 @@ import { Products } from './components/Products/Products';
 import { ShoppingCart } from './components/ShoppingCart/ShoppingCart';
 import { PathNavigation } from './enums/navigation';
 
-export const App = () => (
-  <div className="wrapper">
-    <div className="container">
-      <Header />
-      <Routes>
-        <Route path={PathNavigation.PRODUCT} element={<Products />} />
-        <Route path={PathNavigation.SHOPPING_CART} element={<ShoppingCart />} />
-        <Route
-          path={PathNavigation.EMPTY_SHOPPING_CART}
-          element={<EmptyShoppingCart />}
-        />
-        <Route path="/*" element={<PageNotFound />} />
-      </Routes>
+export const App = () => {
+  const [searchValue, setSearchValue] = useState('');
+
+  return (
+    <div className="wrapper">
+      <div className="container">
+        <Header searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Routes>
+          <Route
+            path={PathNavigation.PRODUCT}
+            element={<Products searchValue={searchValue} />}
+          />
+          <Route path={PathNavigation.SHOPPING_CART} element={<ShoppingCart />} />
+          <Route
+            path={PathNavigation.EMPTY_SHOPPING_CART}
+            element={<EmptyShoppingCart />}
+          />
+          <Route path="/*" element={<PageNotFound />} />
+        </Routes>
+      </div>
     </div>
-  </div>
-);
+  );
+};
