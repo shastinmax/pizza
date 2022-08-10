@@ -18,7 +18,7 @@ export const Products = (props: SearchPropsType) => {
   });
   const [category, setCategory] = useState(0);
 
-  const { searchValue } = props;
+  const { searchValue, currentPage } = props;
 
   useEffect(() => {
     setIsLoading(true);
@@ -29,7 +29,7 @@ export const Products = (props: SearchPropsType) => {
     const search = searchValue ? `&search=${searchValue}` : '';
 
     fetch(
-      `https://62c71dc574e1381c0a71bed0.mockapi.io/items?${search}${categoryID}&sortBy=${sortBy}&order=${order}`,
+      `https://62c71dc574e1381c0a71bed0.mockapi.io/items?page=${currentPage}&limit=4&${search}${categoryID}&sortBy=${sortBy}&order=${order}`,
     )
       .then(res => res.json())
       .then(res => {
@@ -37,7 +37,7 @@ export const Products = (props: SearchPropsType) => {
         setIsLoading(false);
       });
     window.scroll(0, 0);
-  }, [category, sortType, searchValue]);
+  }, [category, sortType, searchValue, currentPage]);
   const onClickCategory = (i: number) => {
     setCategory(i);
   };
@@ -47,21 +47,16 @@ export const Products = (props: SearchPropsType) => {
     setSortType(sortTypeName);
   };
 
-  console.log(items, 'dfsdf');
-  // @ts-ignore
-  // @ts-ignore
-  const pizzas = items
-    // .filter(el => el.name.includes(searchValue))
-    .map(({ id, name, imageUrl, sizes, price, types }) => (
-      <ProductItem
-        key={id}
-        name={name}
-        imageUrl={imageUrl}
-        sizes={sizes}
-        price={price}
-        types={types}
-      />
-    ));
+  const pizzas = items.map(({ id, name, imageUrl, sizes, price, types }) => (
+    <ProductItem
+      key={id}
+      name={name}
+      imageUrl={imageUrl}
+      sizes={sizes}
+      price={price}
+      types={types}
+    />
+  ));
   // eslint-disable-next-line react/no-array-index-key
   const skeletons = [...new Array(10)].map((_, index) => <Sceleton key={index} />);
   return (

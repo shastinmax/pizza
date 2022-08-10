@@ -6,12 +6,14 @@ import './App.scss';
 import EmptyShoppingCart from './components/EmptyShoppingCart/EmptyShoppingCart';
 import { Header } from './components/Header/Header';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
+import { Pagination } from './components/Pagination/Pagination';
 import { Products } from './components/Products/Products';
 import { ShoppingCart } from './components/ShoppingCart/ShoppingCart';
 import { PathNavigation } from './enums/navigation';
 
 export const App = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
 
   return (
     <div className="wrapper">
@@ -20,7 +22,7 @@ export const App = () => {
         <Routes>
           <Route
             path={PathNavigation.PRODUCT}
-            element={<Products searchValue={searchValue} />}
+            element={<Products searchValue={searchValue} currentPage={currentPage} />}
           />
           <Route path={PathNavigation.SHOPPING_CART} element={<ShoppingCart />} />
           <Route
@@ -29,6 +31,7 @@ export const App = () => {
           />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
+        <Pagination setCurrentPage={setCurrentPage} currentPage={currentPage} />
       </div>
     </div>
   );
