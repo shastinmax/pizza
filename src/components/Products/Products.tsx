@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from 'react';
 
+import { useAppSelector } from '../../hooks/useAppSelectors';
+import { selectCategoryIndex, selectSortCategory } from '../../store/filter/selectors';
 import { ProductItem } from '../ProductItem/ProductItem';
 import { Sceleton } from '../Sceleton/Sceleton';
 
 import { ButtonsCategory } from './Buttons/ButtonsCategory';
 import s from './Products.module.scss';
 import { Sort } from './Sort/Sort';
-import { SortType } from './Sort/types';
 import { SearchPropsType } from './types';
 
 export const Products = (props: SearchPropsType) => {
+  const itemCategoryIndex = useAppSelector(selectCategoryIndex);
+  const itemCategorySort = useAppSelector(selectSortCategory);
+
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [sortType, setSortType] = useState({
-    name: 'популярности',
-    sortProperty: 'property',
-  });
-  const [category, setCategory] = useState(0);
 
   const { searchValue, currentPage } = props;
 
   useEffect(() => {
     setIsLoading(true);
 
-    const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
-    const sortBy = sortType.sortProperty.replace('-', '');
-    const categoryID = category > 0 ? `category=${category}` : '';
+    const order = itemCategorySort.sortProperty.includes('-') ? 'asc' : 'desc';
+    const sortBy = itemCategorySort.sortProperty.replace('-', '');
+    const categoryID = itemCategoryIndex > 0 ? `category=${itemCategoryIndex}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
 
     fetch(
@@ -37,15 +36,7 @@ export const Products = (props: SearchPropsType) => {
         setIsLoading(false);
       });
     window.scroll(0, 0);
-  }, [category, sortType, searchValue, currentPage]);
-  const onClickCategory = (i: number) => {
-    setCategory(i);
-  };
-
-  const onClickSortCategory = (sortTypeName: SortType) => {
-    // @ts-ignore
-    setSortType(sortTypeName);
-  };
+  }, [itemCategoryIndex, itemCategorySort, searchValue, currentPage]);
 
   const pizzas = items.map(({ id, name, imageUrl, sizes, price, types }) => (
     <ProductItem
@@ -62,8 +53,8 @@ export const Products = (props: SearchPropsType) => {
   return (
     <>
       <div className={s.products__header}>
-        <ButtonsCategory category={category} onClickCategory={onClickCategory} />
-        <Sort sortType={sortType} onClickSortCategory={onClickSortCategory} />
+        <ButtonsCategory />
+        <Sort />
       </div>
       <h1 className={s.products__title}>Все пиццы</h1>
       <div className={s.products__productItems}>
