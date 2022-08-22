@@ -4,7 +4,11 @@ import axios from 'axios';
 
 import { axiosConfig } from '../../api/config';
 import { useAppSelector } from '../../hooks/useAppSelectors';
-import { selectCategoryIndex, selectSortCategory } from '../../store/filter/selectors';
+import {
+  selectCategoryIndex,
+  selectPageCount,
+  selectSortCategory,
+} from '../../store/filter/selectors';
 import { ProductItem } from '../ProductItem/ProductItem';
 import { Sceleton } from '../Sceleton/Sceleton';
 
@@ -16,11 +20,12 @@ import { SearchPropsType } from './types';
 export const Products = (props: SearchPropsType) => {
   const itemCategoryIndex = useAppSelector(selectCategoryIndex);
   const itemCategorySort = useAppSelector(selectSortCategory);
+  const currentPage = useAppSelector(selectPageCount);
 
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { searchValue, currentPage } = props;
+  const { searchValue } = props;
 
   useEffect(() => {
     setIsLoading(true);

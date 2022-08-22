@@ -13,7 +13,6 @@ import { PathNavigation } from './enums/navigation';
 
 export const App = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
 
   return (
     <div className="wrapper">
@@ -22,7 +21,7 @@ export const App = () => {
         <Routes>
           <Route
             path={PathNavigation.PRODUCT}
-            element={<Products searchValue={searchValue} currentPage={currentPage} />}
+            element={<Products searchValue={searchValue} />}
           />
           <Route path={PathNavigation.SHOPPING_CART} element={<ShoppingCart />} />
           <Route
@@ -31,7 +30,7 @@ export const App = () => {
           />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
-        <Pagination setCurrentPage={setCurrentPage} currentPage={currentPage} />
+        <Pagination />
       </div>
     </div>
   );

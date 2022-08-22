@@ -8,7 +8,7 @@ const initialState: InitialStateType = {
     name: 'популярности',
     sortProperty: 'property',
   },
-  pageCount: 1,
+  currentPage: 1,
 };
 
 export const filterSlice = createSlice({
@@ -25,7 +25,7 @@ export const filterSlice = createSlice({
     },
     setPageCount(state, action: PayloadAction<number>) {
       // eslint-disable-next-line no-param-reassign
-      state.pageCount = action.payload;
+      state.currentPage = action.payload;
     },
   },
 });

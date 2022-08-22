@@ -1,7 +1,7 @@
 export type InitialStateType = {
   itemCategoryIndex: number;
   itemSortValue: ItemSortValueType;
-  pageCount: number;
+  currentPage: number;
 };
 export type ItemSortValueType = {
   name: string;
