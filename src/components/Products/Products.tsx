@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import axios from 'axios';
+
+import { axiosConfig } from '../../api/config';
 import { useAppSelector } from '../../hooks/useAppSelectors';
 import { selectCategoryIndex, selectSortCategory } from '../../store/filter/selectors';
 import { ProductItem } from '../ProductItem/ProductItem';
@@ -27,15 +30,14 @@ export const Products = (props: SearchPropsType) => {
     const categoryID = itemCategoryIndex > 0 ? `category=${itemCategoryIndex}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
 
-    fetch(
-      `https://62c71dc574e1381c0a71bed0.mockapi.io/items?page=${currentPage}&limit=4&${search}${categoryID}&sortBy=${sortBy}&order=${order}`,
-    )
-      .then(res => res.json())
+    axios
+      .get(
+        `${axiosConfig.baseURL}?page=${currentPage}&limit=4&${search}${categoryID}&sortBy=${sortBy}&order=${order}`,
+      )
       .then(res => {
-        setItems(res);
-        setIsLoading(false);
-      });
-    window.scroll(0, 0);
+        setItems(res.data);
+      })
+      .finally(() => setIsLoading(false));
   }, [itemCategoryIndex, itemCategorySort, searchValue, currentPage]);
 
   const pizzas = items.map(({ id, name, imageUrl, sizes, price, types }) => (
