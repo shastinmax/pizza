@@ -27,9 +27,8 @@ export const Products = (props: SearchPropsType) => {
 
   const { searchValue } = props;
 
-  useEffect(() => {
+  const fetchPizzaz = () => {
     setIsLoading(true);
-
     const order = itemCategorySort.sortProperty.includes('-') ? 'asc' : 'desc';
     const sortBy = itemCategorySort.sortProperty.replace('-', '');
     const categoryID = itemCategoryIndex > 0 ? `category=${itemCategoryIndex}` : '';
@@ -43,6 +42,10 @@ export const Products = (props: SearchPropsType) => {
         setItems(res.data);
       })
       .finally(() => setIsLoading(false));
+  };
+
+  useEffect(() => {
+    fetchPizzaz();
   }, [itemCategoryIndex, itemCategorySort, searchValue, currentPage]);
 
   const pizzas = items.map(({ id, name, imageUrl, sizes, price, types }) => (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 // import { categories } from './Modal/constants/constants';
 import { useDispatch } from 'react-redux';
@@ -17,10 +17,22 @@ export const Sort = () => {
   const itemCategorySort = useAppSelector(selectSortCategory);
 
   const [isShow, setIsShow] = useState<boolean>(false);
+  const sortRef = useRef<HTMLInputElement>(null);
 
   const isShowClick = () => {
     setIsShow(!isShow);
   };
+
+  useEffect(() => {
+    const handleClickOutSide = (e: any) => {
+      if (sortRef.current && !e.path.includes(sortRef.current)) {
+        setIsShow(false);
+      }
+    };
+
+    document.body.addEventListener('click', handleClickOutSide);
+    return () => document.body.removeEventListener('click', handleClickOutSide);
+  }, []);
 
   const onClickSortCategory = (sortTypeName: SortType) => {
     dispatch(setSortValue(sortTypeName));
@@ -30,7 +42,7 @@ export const Sort = () => {
   };
 
   return (
-    <div className={s.sort}>
+    <div ref={sortRef} className={s.sort}>
       <img src="/images/icons/arrow-top.svg" alt="arrow" />
       <span className={s.sort__text}>
         Сортировка по:{' '}
