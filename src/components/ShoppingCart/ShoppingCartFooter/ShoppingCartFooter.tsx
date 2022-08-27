@@ -12,8 +12,5 @@ export const ShoppingCartFooter = () => (
       Вернуться назад
     </NavLink>
     <Btn title="Оплатить сейчас" className={s.shoppingCart__btnPay} />
-    {/* <button type="button" className={`btn ${s.shoppingCart__btnPay}`}> */}
-    {/*  Оплатить сейчас */}
-    {/* </button> */}
   </div>
 );

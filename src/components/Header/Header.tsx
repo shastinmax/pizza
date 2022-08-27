@@ -9,8 +9,6 @@ import { SearchPropsType } from './types';
 export const Header = (props: SearchPropsType) => {
   const { searchValue, setSearchValue } = props;
 
-  console.log(searchValue, 'search');
-
   return (
     <div className={s.header__wrapper}>
       <Logo />

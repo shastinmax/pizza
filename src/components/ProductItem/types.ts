@@ -4,4 +4,5 @@ export type ProductItemPropsType = {
   sizes: Array<number>;
   price: number;
   types: Array<number>;
+  id: number;
 };

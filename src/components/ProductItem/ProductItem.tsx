@@ -1,20 +1,36 @@
 import React, { useState } from 'react';
 
+import { useDispatch } from 'react-redux';
+
 import s from './ProductItem.module.scss';
 import { ProductItemPropsType } from './types';
+
+import { addItems, addTotalPrice } from 'store/cart/slice';
 
 const FIRST_INDEX = 0;
 
 export const ProductItem = (props: ProductItemPropsType) => {
-  const { name, imageUrl, sizes, price, types } = props;
+  const dispatch = useDispatch();
+
+  const { name, imageUrl, sizes, price, types, id } = props;
   const categoriesPizzas = ['тонкое', 'традиционное'];
 
   const [count, setCount] = useState<number>(FIRST_INDEX);
-  const [sizeActive, setSizeActive] = useState<null | number>(null);
-  const [categoryActive, setCategoryActive] = useState<null | number>(null);
+  const [sizeActive, setSizeActive] = useState<number>(0);
+  const [categoryActive, setCategoryActive] = useState<number>(0);
 
   const addProductItem = () => {
+    const item = {
+      id,
+      price,
+      imageUrl,
+      name,
+      type: categoriesPizzas[categoryActive],
+      size: sizes[sizeActive],
+    };
     setCount(count + 1);
+    dispatch(addItems(item));
+    dispatch(addTotalPrice(item.price));
   };
   const onSizeActiveClick = (i: number) => {
     setSizeActive(i);
