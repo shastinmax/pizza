@@ -9,4 +9,5 @@ export type ItemsPropsType = {
   name: string;
   type: string;
   size: number;
+  count: number;
 };

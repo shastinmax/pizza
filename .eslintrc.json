@@ -25,15 +25,18 @@
   ],
   "rules": {
     "no-shadow": "off",
+    "no-nested-ternary": "off",
+    "no-param-reassign": "warn",
     "no-alert": "error",
     "no-debugger": "error",
-    "no-plusplus": "error",
+    "no-plusplus": "warn",
     "no-unused-vars": "off",
-    "no-magic-numbers": "off",
+    "no-magic-numbers": "warn",
     "default-param-last": "off",
     "no-use-before-define": "off",
+    "no-array-index-key": "off",
     "no-multiple-empty-lines": [
-      "error",
+      "warn",
       {
         "max": 1
       }
@@ -43,6 +46,13 @@
     ],
     "@typescript-eslint/no-unused-vars": [
       "error"
+    ],
+    "@typescript-eslint/no-magic-numbers": [
+      "error",
+      {
+        "ignoreEnums": true,
+        "ignoreNumericLiteralTypes": true
+      }
     ],
     "@typescript-eslint/no-use-before-define": [
       "error"
