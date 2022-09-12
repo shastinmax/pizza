@@ -7,6 +7,8 @@ import { ShoppingCartPropsType } from '../types';
 
 import s from './ShoppingCartItem.module.scss';
 
+const DISABLE_BUTTON = 1;
+
 export const ShoppingCartItem = (props: ShoppingCartPropsType) => {
   const dispatch = useDispatch();
 
@@ -42,7 +44,11 @@ export const ShoppingCartItem = (props: ShoppingCartPropsType) => {
       </div>
 
       <div className={s.shoppingCartItem__increment}>
-        <button onClick={onDecCountClick} type="button">
+        <button
+          disabled={DISABLE_BUTTON === count}
+          onClick={onDecCountClick}
+          type="button"
+        >
           <img src="/images/icons/shCart-minus.svg" alt="minus" />
         </button>
         <span>{count}</span>

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
 import { axiosConfig } from '../../api/config';
 import { useAppSelector } from '../../hooks/useAppSelectors';
+import { selectPizzas } from '../../store/cart/selectors';
 import {
   selectCategoryIndex,
   selectPageCount,
@@ -17,38 +19,54 @@ import s from './Products.module.scss';
 import { Sort } from './Sort/Sort';
 import { SearchPropsType } from './types';
 
+import { setItems } from 'store/pizzas/slice';
+
+const FIRST_INDEX = 0;
+const SKELETONS_ARRAY_LENGTH = 4;
+
 export const Products = (props: SearchPropsType) => {
   const itemCategoryIndex = useAppSelector(selectCategoryIndex);
   const itemCategorySort = useAppSelector(selectSortCategory);
   const currentPage = useAppSelector(selectPageCount);
+  const pizza = useAppSelector(selectPizzas);
 
-  const [items, setItems] = useState([]);
+  const dispatch = useDispatch();
+
   const [isLoading, setIsLoading] = useState(true);
 
   const { searchValue } = props;
 
-  const fetchPizzaz = () => {
+  const fetchPizzas = async () => {
     setIsLoading(true);
+
     const order = itemCategorySort.sortProperty.includes('-') ? 'asc' : 'desc';
     const sortBy = itemCategorySort.sortProperty.replace('-', '');
-    const categoryID = itemCategoryIndex > 0 ? `category=${itemCategoryIndex}` : '';
+    const categoryID =
+      itemCategoryIndex > FIRST_INDEX ? `category=${itemCategoryIndex}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
 
-    axios
-      .get(
+    try {
+      const { data } = await axios.get(
         `${axiosConfig.baseURL}?page=${currentPage}&limit=4&${search}${categoryID}&sortBy=${sortBy}&order=${order}`,
-      )
-      .then(res => {
-        setItems(res.data);
-      })
-      .finally(() => setIsLoading(false));
+      );
+
+      // setItems(res.data);
+      dispatch(setItems(data));
+    } catch (err) {
+      // eslint-disable-next-line no-alert
+      alert('Ошибка при получении пицц!!');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    fetchPizzaz();
+    fetchPizzas();
   }, [itemCategoryIndex, itemCategorySort, searchValue, currentPage]);
 
-  const pizzas = items.map(({ id, name, imageUrl, sizes, price, types }) => (
+  // @ts-ignore
+  const pizzas = pizza.map(({ id, name, imageUrl, sizes, price, types }) => (
+    // const pizzas = pizza.map((item: { id: React.Key | null | undefined; }) => (
     <ProductItem
       key={id}
       name={name}
@@ -59,8 +77,10 @@ export const Products = (props: SearchPropsType) => {
       id={id}
     />
   ));
-  // eslint-disable-next-line react/no-array-index-key
-  const skeletons = [...new Array(10)].map((_, index) => <Sceleton key={index} />);
+  const skeletons = [...new Array(SKELETONS_ARRAY_LENGTH)].map((_, index) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <Sceleton key={index} />
+  ));
   return (
     <>
       <div className={s.products__header}>
@@ -68,12 +88,7 @@ export const Products = (props: SearchPropsType) => {
         <Sort />
       </div>
       <h1 className={s.products__title}>Все пиццы</h1>
-      <div className={s.products__productItems}>
-        {isLoading
-          ? // eslint-disable-next-line react/no-array-index-key
-            skeletons
-          : pizzas}
-      </div>
+      <div className={s.products__productItems}>{isLoading ? skeletons : pizzas}</div>
     </>
   );
 };

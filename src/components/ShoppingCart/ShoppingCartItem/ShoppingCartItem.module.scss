@@ -61,9 +61,11 @@
     &__increment {
         display: flex;
         align-items: center;
-
-
-
+        button{
+            &:disabled{
+                opacity: .2;
+            }
+        }
         img {
             width: 32px;
             &:hover{
